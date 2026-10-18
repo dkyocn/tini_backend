@@ -68,8 +68,9 @@ public class SocialService {
       // 기존 사용자 확인
       UserEntity existingUser = userRepository.getUserByUserId(socialUserId, SNS.KAKAO);
       UserDTO userDTO;
+      boolean isNewUser = existingUser == null;
 
-      if (existingUser == null) {
+      if (isNewUser) {
         // 신규 사용자 회원가입
         registerKakaoUser(kakaoUserInfo);
 
@@ -97,6 +98,7 @@ public class SocialService {
             .accessToken(jwtAccessToken)
             .refreshToken(jwtRefreshToken)
             .user(userDTO)
+            .isNewUser(isNewUser)
             .build();
 
     } catch (Exception e) {
@@ -174,8 +176,9 @@ public class SocialService {
       // 기존 사용자 확인
       UserEntity existingUser = userRepository.getUserByUserId(socialUserId, SNS.GOOGLE);
       UserDTO userDTO;
+      boolean isNewUser = existingUser == null;
 
-      if (existingUser == null) {
+      if (isNewUser) {
         // 신규 사용자 회원가입
         registerGoogleUser(googleUserInfo);
 
@@ -203,6 +206,7 @@ public class SocialService {
           .accessToken(jwtAccessToken)
           .refreshToken(jwtRefreshToken)
           .user(userDTO)
+          .isNewUser(isNewUser)
           .build();
 
     } catch (Exception e) {

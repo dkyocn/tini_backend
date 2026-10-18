@@ -18,15 +18,16 @@ public class TemplateCommonDTO extends BaseDTO {
   protected int id;
   protected String title;
   protected List<TemplateDiaryDTO> templateDiaryDTOS;
-  // 데일리 포인트
+  protected List<MonthlyItemDTO> monthlyItemDTOS;
+  protected List<PointDTO> pointDTOS;
   // 가계부
 
   public static TemplateCommonDTO from(TemplateCommonEntity templateCommonEntity) {
     return TemplateCommonDTO.builder()
         .id(templateCommonEntity.getId())
         .title(templateCommonEntity.getTitle())
-        .templateDiaryDTOS(templateCommonEntity.getTemplateDiaryEntities().stream().map(TemplateDiaryDTO::from).collect(
-            Collectors.toList()))
+        .monthlyItemDTOS(templateCommonEntity.getMonthlyItemEntities().stream().map(MonthlyItemDTO::from).collect(Collectors.toList()))
+        .pointDTOS(templateCommonEntity.getPointEntities().stream().map(PointDTO::from).collect(Collectors.toList()))
         .updatedAt(templateCommonEntity.getUpdatedAt())
         .createdAt(templateCommonEntity.getCreatedAt())
         .build();

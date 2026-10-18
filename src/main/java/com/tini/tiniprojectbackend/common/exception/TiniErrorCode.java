@@ -31,7 +31,12 @@ public enum TiniErrorCode {
   NOTICE_NOT_FOUND(HttpStatus.NOT_FOUND,"N0001","공지사항 조회에 실패했습니다."),
 
   // 테마
-  THEME_NOT_FOUND(HttpStatus.NOT_FOUND,"P0001","해당 페이지의 테마 조회에 실패했습니다.");
+  THEME_NOT_FOUND(HttpStatus.NOT_FOUND,"P0001","해당 페이지의 테마 조회에 실패했습니다."),
+
+  // 템플릿
+  TEMPLATE_NOT_FOUND(HttpStatus.NOT_FOUND, "M0001", "해당 템플릿 조회에 실패했습니다."),
+  TEMPLATE_CREATE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "M0002", "해당 템플릿을 생성하지 못했습니다."),
+  TEMPLATE_UPDATE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "M0003", "해당 템플릿을 수정하지 못했습니다.");
 
   private final HttpStatus status;
   private final String code;

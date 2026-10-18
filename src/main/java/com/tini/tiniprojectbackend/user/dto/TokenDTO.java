@@ -23,6 +23,8 @@ public class TokenDTO {
   protected String revokedReason;
   protected String deviceId;
   protected UserDTO user;
+  /** 이번 로그인으로 신규 가입됐는지 여부 (false면 기존 계정으로 로그인) */
+  protected boolean isNewUser;
 
   @Builder(builderMethodName = "toTokenBuilder", builderClassName = "toTokenBuilder")
   public TokenDTO(TokenEntity tokenEntity) {
