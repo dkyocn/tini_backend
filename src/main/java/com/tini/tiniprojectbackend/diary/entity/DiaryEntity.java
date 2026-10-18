@@ -2,6 +2,7 @@ package com.tini.tiniprojectbackend.diary.entity;
 
 import com.tini.tiniprojectbackend.common.entity.BaseEntity;
 import com.tini.tiniprojectbackend.diary.dto.DiaryDTO;
+import com.tini.tiniprojectbackend.diary.enumeration.DiaryType;
 import com.tini.tiniprojectbackend.diary.enumeration.Position;
 import com.tini.tiniprojectbackend.template.entity.TemplateDiaryEntity;
 import com.tini.tiniprojectbackend.user.dto.UserDTO;
@@ -49,6 +50,10 @@ public class DiaryEntity extends BaseEntity {
   @Column(name = "CAL_INDEX")
   private int calIndex;
 
+  @Column(name = "TYPE")
+  @Enumerated(EnumType.STRING)
+  private DiaryType  diaryType;
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "USER_UUID", nullable = false)
   private UserEntity user;
@@ -66,8 +71,7 @@ public class DiaryEntity extends BaseEntity {
   public DiaryEntity(DiaryDTO diaryDTO, UserDTO userDTO) {
     this.name = diaryDTO.getName();
     this.position = diaryDTO.getPosition();
-    this.rowIndex = diaryDTO.getRowIndex();
-    this.calIndex = diaryDTO.getCalIndex();
+    this.diaryType = diaryDTO.getDiaryType();
     this.user = UserEntity.createUserBuilder().userDTO(userDTO).build();
     this.isMain = diaryDTO.getIsMain();
   }

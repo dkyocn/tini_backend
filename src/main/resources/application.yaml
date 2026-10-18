@@ -44,4 +44,5 @@ social:
     client-secret: ${KAKAO_CLIENT_SECRET:58969640d74f895c291eee6cb53cfa89}
     redirect-uri: ${KAKAO_REDIRECT_URI:http://localhost:3000/auth/kakao/callback}
     admin-key: ${KAKAO_ADMIN_KEY:}
-
+server:
+  address: 0.0.0.0

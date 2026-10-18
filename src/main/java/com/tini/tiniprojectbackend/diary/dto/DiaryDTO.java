@@ -2,6 +2,7 @@ package com.tini.tiniprojectbackend.diary.dto;
 
 import com.tini.tiniprojectbackend.common.dto.BaseDTO;
 import com.tini.tiniprojectbackend.diary.entity.DiaryEntity;
+import com.tini.tiniprojectbackend.diary.enumeration.DiaryType;
 import com.tini.tiniprojectbackend.diary.enumeration.Position;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class DiaryDTO extends BaseDTO {
   protected Position position;
   protected int rowIndex;
   protected int calIndex;
+  protected DiaryType diaryType;
   protected int isMain;
   protected String userUuid;
 
@@ -29,6 +31,7 @@ public class DiaryDTO extends BaseDTO {
         .position(diaryEntity.getPosition())
         .rowIndex(diaryEntity.getRowIndex())
         .calIndex(diaryEntity.getCalIndex())
+        .diaryType(diaryEntity.getDiaryType())
         .isMain(diaryEntity.getIsMain())
         .userUuid(diaryEntity.getUser().getUserUuid())
         .createdAt(diaryEntity.getCreatedAt())

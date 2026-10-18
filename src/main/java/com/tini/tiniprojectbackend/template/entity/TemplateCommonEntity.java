@@ -34,4 +34,6 @@ public class TemplateCommonEntity extends BaseEntity {
   private List<PointEntity> pointEntities;
   @OneToMany(mappedBy = "templateCommon", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
   private List<BudgetMonthlyEntity> budgetMonthlyEntities;
+  @OneToMany(mappedBy = "templateCommon", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+  private List<MonthlyItemEntity> monthlyItemEntities;
 }
