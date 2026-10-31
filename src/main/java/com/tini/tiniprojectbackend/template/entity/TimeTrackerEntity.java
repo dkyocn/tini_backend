@@ -1,6 +1,7 @@
 package com.tini.tiniprojectbackend.template.entity;
 
 import com.tini.tiniprojectbackend.common.entity.BaseEntity;
+import com.tini.tiniprojectbackend.template.dto.TimeTrackerDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,4 +39,17 @@ public class TimeTrackerEntity extends BaseEntity {
   private List<TimeTrackerItemEntity> timeTrackerItemEntities;
   @OneToMany(mappedBy = "timeTracker", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
   private List<TemplateDiaryEntity> templateDiaryEntities;
+
+  @Builder(builderMethodName = "createTimeTrackerBuilder", buildMethodName = "createTimeTrackerBuilder")
+  public TimeTrackerEntity(TimeTrackerDTO timeTrackerDTO) {
+    this.title = timeTrackerDTO.getTitle();
+    this.targetStartTime = timeTrackerDTO.getTargetStartTime();
+    this.targetEndTime = timeTrackerDTO.getTargetEndTime();
+  }
+
+  public void updateTimeTracker(TimeTrackerDTO timeTrackerDTO) {
+    this.title = timeTrackerDTO.getTitle();
+    this.targetStartTime = timeTrackerDTO.getTargetStartTime();
+    this.targetEndTime = timeTrackerDTO.getTargetEndTime();
+  }
 }

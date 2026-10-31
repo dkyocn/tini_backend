@@ -21,7 +21,7 @@ public class TemplateDiaryDTO extends BaseDTO {
   protected LocalDateTime customTime;
   protected DiaryDTO diary;
   protected TemplateCommonDTO templateCommon;
-  // 타임 트래커 DTO
+  protected TimeTrackerDTO timeTracker;
   // 북 트래커 DTO
 
   public static TemplateDiaryDTO from(TemplateDiaryEntity templateDiaryEntity) {
@@ -31,6 +31,8 @@ public class TemplateDiaryDTO extends BaseDTO {
         .customTime(templateDiaryEntity.getCustomTime())
         .diary(DiaryDTO.from(templateDiaryEntity.getDiary()))
         .templateCommon(TemplateCommonDTO.from(templateDiaryEntity.getTemplateCommon()))
+        .timeTracker(TimeTrackerDTO.from(templateDiaryEntity.getTimeTracker()))
+
         .updatedAt(templateDiaryEntity.getUpdatedAt())
         .createdAt(templateDiaryEntity.getCreatedAt())
         .build();
